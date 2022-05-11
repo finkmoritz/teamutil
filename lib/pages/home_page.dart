@@ -19,13 +19,36 @@ class HomePage extends StatelessWidget {
               MaterialPageRoute(
                 builder: (context) => QaPage(
                   estimationNode: EstimationNode(
-                    'Dumm?',
+                    'Which complexity has the implementation?',
                     1,
                     children: [
-                      EstimationNode('?', 1, answer: 'Nein'),
-                      EstimationNode('?', 1, answer: 'Ja'),
-                      EstimationNode('?', 1, answer: 'Vielleicht'),
-                      EstimationNode('?', 1, answer: 'Wahrscheinlich'),
+                      EstimationNode('How many classes you need to change?',
+                          1,
+                          answer: 'low',
+                          children: [
+                            EstimationNode("Next question", 1, answer: '5'),
+                            EstimationNode("Next question", 1, answer: '10'),
+                            EstimationNode("Next question", 1, answer: '15'),
+                            EstimationNode("Next question", 1, answer: '20')
+                          ]),
+                      EstimationNode('How many classes you need to change?',
+                          1,
+                          answer: 'medium',
+                          children: [
+                            EstimationNode("Next question", 1, answer: '5'),
+                            EstimationNode("Next question", 1, answer: '10'),
+                            EstimationNode("Next question", 1, answer: '15'),
+                            EstimationNode("Next question", 1, answer: '20')
+                          ]),
+                      EstimationNode('How many classes you need to change?',
+                          1,
+                          answer: 'high',
+                          children: [
+                            EstimationNode("Next question", 1, answer: '5'),
+                            EstimationNode("Next question", 1, answer: '10'),
+                            EstimationNode("Next question", 1, answer: '15'),
+                            EstimationNode("Next question", 1, answer: '20')
+                          ])
                     ],
                   ),
                 ),
