@@ -1,11 +1,15 @@
 class EstimationNode<T> {
+  final EstimationNode parent;
+  final String question;
   final List<EstimationNode>? children;
-  final T? value;
-  final Function<int>(T choice)? evaluationFunc;
+  final T? answer;
+  final Function<int>(T answer)? evaluationFunc;
 
-  EstimationNode({
+  EstimationNode(
+    this.parent,
+    this.question, {
     this.children,
-    this.value,
+    this.answer,
     this.evaluationFunc,
   });
 }
