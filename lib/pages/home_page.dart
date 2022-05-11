@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text('Estimation Tinder'),
+        automaticallyImplyLeading: false,
       ),
       body: Center(
         child: ElevatedButton.icon(

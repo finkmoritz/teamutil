@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:teamutil/components/estimation_tinder_card.dart';
 import 'package:teamutil/model/estimation_node.dart';
+import 'package:teamutil/pages/home_page.dart';
 
 class QaPage extends StatelessWidget {
   final EstimationNode estimationNode;
@@ -28,17 +29,29 @@ class QaPage extends StatelessWidget {
         ),
       ),
     );
-    return Scaffold(
-      appBar: AppBar(
-        title: Text('Estimation Tinder'),
-      ),
-      body: Center(
-        child: Stack(
-          children: <Widget>[
-            EstimationTinderCard(
-              estimationNode: estimationNode,
-            ),
-          ] + answers,
+    return WillPopScope(
+      onWillPop: () async {
+        Navigator.push(
+          context,
+          MaterialPageRoute(
+            builder: (context) => const HomePage(),
+          ),
+        );
+        return false;
+      },
+      child: Scaffold(
+        appBar: AppBar(
+          title: Text('Estimation Tinder'),
+        ),
+        body: Center(
+          child: Stack(
+            children: <Widget>[
+                  EstimationTinderCard(
+                    estimationNode: estimationNode,
+                  ),
+                ] +
+                answers,
+          ),
         ),
       ),
     );
