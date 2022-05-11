@@ -3,7 +3,7 @@ class EstimationNode<T> {
   final EstimationNode? parent;
   final List<EstimationNode>? children;
   final T? answer;
-  final Function<int>(T answer)? evaluationFunc;
+  final Function<int>(EstimationNode currentNode)? evaluationFunc;
 
   EstimationNode(
     this.question, {
