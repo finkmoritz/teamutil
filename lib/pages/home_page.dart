@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:teamutil/model/estimation_node.dart';
+import 'package:teamutil/pages/qa_page.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,7 +13,25 @@ class HomePage extends StatelessWidget {
       ),
       body: Center(
         child: ElevatedButton.icon(
-          onPressed: () {},
+          onPressed: () {
+            Navigator.push(
+              context,
+              MaterialPageRoute(
+                builder: (context) => QaPage(
+                  estimationNode: EstimationNode(
+                    'Dumm?',
+                    1,
+                    children: [
+                      EstimationNode('?', 1, answer: 'Nein'),
+                      EstimationNode('?', 1, answer: 'Ja'),
+                      EstimationNode('?', 1, answer: 'Vielleicht'),
+                      EstimationNode('?', 1, answer: 'Wahrscheinlich'),
+                    ],
+                  ),
+                ),
+              ),
+            );
+          },
           icon: Icon(Icons.add),
           label: Text('New Estimation'),
         ),
