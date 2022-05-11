@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:google_fonts/google_fonts.dart';
 import 'package:teamutil/pages/home_page.dart';
 
 void main() {
@@ -14,7 +15,9 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       title: 'Estimation Tinder',
       theme: ThemeData(
-        fontFamily: 'Georgia',
+        textTheme: GoogleFonts.pacificoTextTheme(
+          Theme.of(context).textTheme,
+        ),
         primarySwatch: Colors.pink,
       ),
       home: const HomePage(),
