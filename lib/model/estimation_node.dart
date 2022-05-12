@@ -1,18 +1,19 @@
 class EstimationNode<T> {
   final String question;
-  int numberOfVisits = 0;
-  int maxVisits;
-  final EstimationNode? parent;
-  late final List<EstimationNode> children;
-  final T? answer;
-  final Function<int>(EstimationNode currentNode)? evaluationFunc;
+  final List<String> choices;
+  final List<int> nextQuestionIndexes;
 
-  EstimationNode(
-    this.question,
-    this.maxVisits, {
-    this.parent,
-    this.children = const [],
-    this.answer,
-    this.evaluationFunc,
+  EstimationNode({
+    required this.question,
+    required this.choices,
+    required this.nextQuestionIndexes,
   });
+
+  factory EstimationNode.q1() {
+    return EstimationNode(
+      question: 'Which complexity has the implementation?',
+      choices: ['low', 'medium', 'high'],
+      nextQuestionIndexes: [1, 1, 1],
+    );
+  }
 }
