@@ -28,6 +28,15 @@ class HomePage extends StatelessWidget {
           label: const Text('New Estimation'),
         ),
       ),
+      bottomSheet: Row(
+        mainAxisAlignment: MainAxisAlignment.center,
+        children: const [
+          Text(
+            'Powered by Team 3',
+            textAlign: TextAlign.center,
+          ),
+        ],
+      ),
     );
   }
 }
