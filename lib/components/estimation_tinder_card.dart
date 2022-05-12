@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:provider/provider.dart';
 import 'package:teamutil/model/estimation_node.dart';
+import 'package:teamutil/model/estimation_result.dart';
 import 'package:teamutil/pages/estimation_result_page.dart';
 import 'package:teamutil/pages/qa_page.dart';
 import 'package:teamutil/providers/estimation_provider.dart';
@@ -16,7 +17,6 @@ class EstimationTinderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    print('build');
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6,
       child: Center(
@@ -29,7 +29,6 @@ class EstimationTinderCard extends StatelessWidget {
           swipeDown: true,
           totalNum: 1,
           cardBuilder: (context, index) {
-            print('cardBuilder');
             return Card(
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(50.0),
@@ -43,14 +42,14 @@ class EstimationTinderCard extends StatelessWidget {
                 )));
           },
           swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
-            print('Swiped??: ${orientation.name}');
             if (estimationNode.nextQuestionIndexes.isEmpty) {
-              // TODO evaluate
+              EstimationResult result = EstimationResult();
+              result.calculateEffort(context.read<EstimationProvider>().nodes);
               Navigator.push(
                   context,
                   MaterialPageRoute(
                     builder: (context) => EstimationResultPage(
-                      total: 15.33,
+                      estimationResult: result,
                     ),
                   ),
                 );
@@ -77,7 +76,6 @@ class EstimationTinderCard extends StatelessWidget {
                   answerIndex = null;
               }
               if (answerIndex != null) {
-                print('answerIndex: $answerIndex');
                 context.read<EstimationProvider>().setAnswerIndex(answerIndex);
                 Navigator.push(
                   context,

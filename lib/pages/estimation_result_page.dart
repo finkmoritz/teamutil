@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+import 'package:teamutil/model/estimation_result.dart';
 import 'package:teamutil/pages/home_page.dart';
 
 class EstimationResultPage extends StatelessWidget {
-  final double total;
+  final EstimationResult estimationResult;
 
   const EstimationResultPage({
-    required this.total,
+    required this.estimationResult,
     Key? key,
   }) : super(key: key);
 
@@ -36,21 +37,21 @@ class EstimationResultPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Analysis'),
-                      Text('${total.toString()} h'),
+                      Text('${estimationResult.analysisEffort.toString()} h'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Implementation'),
-                      Text('${total.toString()} h'),
+                      Text('${estimationResult.implementationEffort.toString()} h'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Test'),
-                      Text('${total.toString()} h'),
+                      Text('${estimationResult.testEffort.toString()} h'),
                     ],
                   ),
                 ],
@@ -58,7 +59,7 @@ class EstimationResultPage extends StatelessWidget {
               Column(
                 mainAxisSize: MainAxisSize.min,
                 children: [
-                  Divider(
+                  const Divider(
                     thickness: 2,
                   ),
                   Row(
@@ -69,7 +70,7 @@ class EstimationResultPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '${total.toString()} h',
+                        '${estimationResult.totalEffort.toString()} h',
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
