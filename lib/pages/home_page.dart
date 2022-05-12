@@ -10,6 +10,7 @@ class HomePage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        leading: Image.asset('assets/logo.png'),
         title: const Text('Estimation Tinder'),
         automaticallyImplyLeading: false,
       ),
