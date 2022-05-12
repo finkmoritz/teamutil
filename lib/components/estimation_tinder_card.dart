@@ -1,11 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
-import 'package:teamutil/model/estimation_node.dart';
 import 'package:provider/provider.dart';
+import 'package:teamutil/model/estimation_node.dart';
+import 'package:teamutil/pages/qa_page.dart';
 import 'package:teamutil/providers/estimation_provider.dart';
 
 class EstimationTinderCard extends StatelessWidget {
-
   final EstimationNode estimationNode;
 
   const EstimationTinderCard({
@@ -30,16 +30,16 @@ class EstimationTinderCard extends StatelessWidget {
           cardBuilder: (context, index) {
             print('cardBuilder');
             return Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(50.0),
-              ),
-              elevation: 5,
-              child: Center(
-                  child: Text(
-                estimationNode.question,
-                textAlign: TextAlign.center,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              )));
+                shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(50.0),
+                ),
+                elevation: 5,
+                child: Center(
+                    child: Text(
+                  estimationNode.question,
+                  textAlign: TextAlign.center,
+                  style: const TextStyle(fontWeight: FontWeight.bold),
+                )));
           },
           swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
             print('Swiped??: ${orientation.name}');
@@ -70,6 +70,12 @@ class EstimationTinderCard extends StatelessWidget {
               if (answerIndex != null) {
                 print('answerIndex: $answerIndex');
                 context.read<EstimationProvider>().setAnswerIndex(answerIndex);
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => QaPage(),
+                  ),
+                );
               }
             }
           },
