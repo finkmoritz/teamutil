@@ -42,48 +42,48 @@ class EstimationTinderCard extends StatelessWidget {
                 )));
           },
           swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
+            int? answerIndex;
+            switch (orientation) {
+              case CardSwipeOrientation.LEFT:
+                answerIndex = 0;
+                break;
+              case CardSwipeOrientation.RIGHT:
+                answerIndex = 1;
+                break;
+              case CardSwipeOrientation.UP:
+                if (estimationNode.choices.length > 2) {
+                  answerIndex = 2;
+                }
+                break;
+              case CardSwipeOrientation.DOWN:
+                if (estimationNode.choices.length > 3) {
+                  answerIndex = 3;
+                }
+                break;
+              default:
+                answerIndex = null;
+            }
+            if (answerIndex != null) {
+              context.read<EstimationProvider>().setAnswerIndex(answerIndex);
+            }
             if (estimationNode.nextQuestionIndexes.isEmpty) {
               EstimationResult result = EstimationResult();
               result.calculateEffort(context.read<EstimationProvider>().nodes);
               Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => EstimationResultPage(
-                      estimationResult: result,
-                    ),
+                context,
+                MaterialPageRoute(
+                  builder: (context) => EstimationResultPage(
+                    estimationResult: result,
                   ),
-                );
+                ),
+              );
             } else {
-              int? answerIndex;
-              switch (orientation) {
-                case CardSwipeOrientation.LEFT:
-                  answerIndex = 0;
-                  break;
-                case CardSwipeOrientation.RIGHT:
-                  answerIndex = 1;
-                  break;
-                case CardSwipeOrientation.UP:
-                  if (estimationNode.choices.length > 2) {
-                    answerIndex = 2;
-                  }
-                  break;
-                case CardSwipeOrientation.DOWN:
-                  if (estimationNode.choices.length > 3) {
-                    answerIndex = 3;
-                  }
-                  break;
-                default:
-                  answerIndex = null;
-              }
-              if (answerIndex != null) {
-                context.read<EstimationProvider>().setAnswerIndex(answerIndex);
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => QaPage(),
-                  ),
-                );
-              }
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QaPage(),
+                ),
+              );
             }
           },
         ),

@@ -4,7 +4,8 @@ class EstimationResult {
   double analysisEffort = 0;
   double implementationEffort = 0;
   double testEffort = 0;
-  double totalEffort = 0;
+
+  get totalEffort => analysisEffort + implementationEffort + testEffort;
 
   double getHoursFromClassCount(String classCount) {
     switch (classCount) {
@@ -62,7 +63,6 @@ class EstimationResult {
           getComplexityFromString(estimationNodeList[4].answer)
               .calculationFactor;
     }
-    totalEffort = analysisEffort + implementationEffort + testEffort;
   }
 }
 

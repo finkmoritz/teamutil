@@ -13,7 +13,9 @@ class EstimationProvider with ChangeNotifier, DiagnosticableTreeMixin {
 
   void setAnswerIndex(int answerIndex) {
     currentNode.answer = currentNode.choices[answerIndex];
-    currentNodeIndex = currentNode.nextQuestionIndexes[answerIndex];
+    if(answerIndex < currentNode.nextQuestionIndexes.length) {
+      currentNodeIndex = currentNode.nextQuestionIndexes[answerIndex];
+    }
     notifyListeners();
   }
 
