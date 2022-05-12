@@ -21,9 +21,9 @@ class EstimationTinderCard extends StatelessWidget {
       height: MediaQuery.of(context).size.height * 0.6,
       child: Center(
         child: TinderSwapCard(
-          maxWidth: MediaQuery.of(context).size.width * 0.8,
+          maxWidth: MediaQuery.of(context).size.width * 0.6,
           maxHeight: MediaQuery.of(context).size.width * 0.8,
-          minWidth: MediaQuery.of(context).size.width * 0.7,
+          minWidth: MediaQuery.of(context).size.width * 0.5,
           minHeight: MediaQuery.of(context).size.width * 0.7,
           swipeUp: true,
           swipeDown: true,
@@ -77,7 +77,7 @@ class EstimationTinderCard extends StatelessWidget {
                   ),
                 ),
               );
-            } else {
+            } else if(answerIndex != null) {
               Navigator.push(
                 context,
                 MaterialPageRoute(

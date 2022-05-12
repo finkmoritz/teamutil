@@ -42,16 +42,19 @@ class QaPage extends StatelessWidget {
       },
       child: Scaffold(
         appBar: AppBar(
-          title: Text('Estimation Tinder'),
+          title: const Text('Estimation Tinder'),
         ),
-        body: Center(
-          child: Stack(
-            children: <Widget>[
-                  EstimationTinderCard(
-                    estimationNode: estimationNode,
-                  ),
-                ] +
-                answers,
+        body: Padding(
+          padding: const EdgeInsets.all(8.0),
+          child: Center(
+            child: Stack(
+              children: <Widget>[
+                    EstimationTinderCard(
+                      estimationNode: estimationNode,
+                    ),
+                  ] +
+                  answers,
+            ),
           ),
         ),
       ),
