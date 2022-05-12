@@ -13,8 +13,10 @@ class HomePage extends StatelessWidget {
         title: const Text('Estimation Tinder'),
         automaticallyImplyLeading: false,
       ),
-      body: Center(
-        child: ElevatedButton.icon(
+      body: const Center(
+        child: Text('Create your first estimation...'),
+      ),
+      floatingActionButton: FloatingActionButton.extended(
           onPressed: () {
             context.read<EstimationProvider>().reset();
             Navigator.push(
@@ -27,7 +29,6 @@ class HomePage extends StatelessWidget {
           icon: const Icon(Icons.add),
           label: const Text('New Estimation'),
         ),
-      ),
       bottomSheet: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
