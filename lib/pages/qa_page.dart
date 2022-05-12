@@ -2,10 +2,10 @@ import 'package:flutter/material.dart';
 import 'package:teamutil/components/estimation_tinder_card.dart';
 import 'package:teamutil/model/estimation_node.dart';
 import 'package:teamutil/pages/home_page.dart';
+import 'package:provider/provider.dart';
+import 'package:teamutil/providers/estimation_provider.dart';
 
 class QaPage extends StatelessWidget {
-  final EstimationNode estimationNode;
-
   final List<Alignment> alignments = [
     Alignment.centerLeft,
     Alignment.centerRight,
@@ -14,18 +14,19 @@ class QaPage extends StatelessWidget {
   ];
 
   QaPage({
-    required this.estimationNode,
     Key? key,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    EstimationNode estimationNode = context.watch<EstimationProvider>().currentNode;
+
     List<Widget> answers = List.generate(
-      estimationNode.children.length,
+      estimationNode.choices.length,
       (index) => Positioned.fill(
         child: Align(
           alignment: alignments[index],
-          child: Text(estimationNode.children[index].answer),
+          child: Text(estimationNode.choices[index]),
         ),
       ),
     );

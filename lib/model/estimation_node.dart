@@ -4,11 +4,12 @@ class EstimationNode<T> {
   final List<int> nextQuestionIndexes;
   dynamic answer;
 
-  EstimationNode(
-      {required this.question,
-      required this.choices,
-      required this.nextQuestionIndexes,
-      this.answer});
+  EstimationNode({
+    required this.question,
+    required this.choices,
+    required this.nextQuestionIndexes,
+    this.answer,
+  });
 
   factory EstimationNode.q1() {
     return EstimationNode(
@@ -54,7 +55,7 @@ class EstimationNode<T> {
     return EstimationNode(
       question: 'How much Analysis is needed according to the implementation?',
       choices: ['0-10%', '10-20%', '20-30%', 'more than 30%'],
-      nextQuestionIndexes: [-1, -1],
+      nextQuestionIndexes: [],
     );
   }
 }

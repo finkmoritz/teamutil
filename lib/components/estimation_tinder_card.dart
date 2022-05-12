@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:teamutil/model/estimation_node.dart';
-import 'package:teamutil/pages/qa_page.dart';
+import 'package:provider/provider.dart';
+import 'package:teamutil/providers/estimation_provider.dart';
 
 class EstimationTinderCard extends StatelessWidget {
+
   final EstimationNode estimationNode;
 
   const EstimationTinderCard({
@@ -13,6 +15,7 @@ class EstimationTinderCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    print('build');
     return SizedBox(
       height: MediaQuery.of(context).size.height * 0.6,
       child: Center(
@@ -24,7 +27,9 @@ class EstimationTinderCard extends StatelessWidget {
           swipeUp: true,
           swipeDown: true,
           totalNum: 1,
-          cardBuilder: (context, index) => Card(
+          cardBuilder: (context, index) {
+            print('cardBuilder');
+            return Card(
               shape: RoundedRectangleBorder(
                 borderRadius: BorderRadius.circular(50.0),
               ),
@@ -34,10 +39,11 @@ class EstimationTinderCard extends StatelessWidget {
                 estimationNode.question,
                 textAlign: TextAlign.center,
                 style: const TextStyle(fontWeight: FontWeight.bold),
-              ))),
+              )));
+          },
           swipeCompleteCallback: (CardSwipeOrientation orientation, int index) {
             print('Swiped??: ${orientation.name}');
-            if (estimationNode.children.isEmpty) {
+            if (estimationNode.nextQuestionIndexes.isEmpty) {
               // TODO evaluate
             } else {
               int? answerIndex;
@@ -49,12 +55,12 @@ class EstimationTinderCard extends StatelessWidget {
                   answerIndex = 1;
                   break;
                 case CardSwipeOrientation.UP:
-                  if (estimationNode.children.length > 2) {
+                  if (estimationNode.choices.length > 2) {
                     answerIndex = 2;
                   }
                   break;
                 case CardSwipeOrientation.DOWN:
-                  if (estimationNode.children.length > 3) {
+                  if (estimationNode.choices.length > 3) {
                     answerIndex = 3;
                   }
                   break;
@@ -63,14 +69,7 @@ class EstimationTinderCard extends StatelessWidget {
               }
               if (answerIndex != null) {
                 print('answerIndex: $answerIndex');
-                Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                    builder: (context) => QaPage(
-                      estimationNode: estimationNode.children[answerIndex!],
-                    ),
-                  ),
-                );
+                context.read<EstimationProvider>().setAnswerIndex(answerIndex);
               }
             }
           },
