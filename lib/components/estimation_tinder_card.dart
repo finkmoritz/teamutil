@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_tindercard/flutter_tindercard.dart';
 import 'package:provider/provider.dart';
 import 'package:teamutil/model/estimation_node.dart';
+import 'package:teamutil/pages/estimation_result_page.dart';
 import 'package:teamutil/pages/qa_page.dart';
 import 'package:teamutil/providers/estimation_provider.dart';
 
@@ -45,6 +46,14 @@ class EstimationTinderCard extends StatelessWidget {
             print('Swiped??: ${orientation.name}');
             if (estimationNode.nextQuestionIndexes.isEmpty) {
               // TODO evaluate
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => EstimationResultPage(
+                      total: 15.33,
+                    ),
+                  ),
+                );
             } else {
               int? answerIndex;
               switch (orientation) {
