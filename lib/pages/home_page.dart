@@ -17,19 +17,22 @@ class HomePage extends StatelessWidget {
       body: const Center(
         child: Text('Create your first estimation...'),
       ),
-      floatingActionButton: FloatingActionButton.extended(
-          onPressed: () {
-            context.read<EstimationProvider>().reset();
-            Navigator.push(
-              context,
-              MaterialPageRoute(
-                builder: (context) => QaPage(),
-              ),
-            );
-          },
-          icon: const Icon(Icons.add),
-          label: const Text('New Estimation'),
-        ),
+      floatingActionButton: Padding(
+        padding: const EdgeInsets.only(bottom: 16.0),
+        child: FloatingActionButton.extended(
+            icon: const Icon(Icons.add),
+            label: const Text('New Estimation'),
+            onPressed: () {
+              context.read<EstimationProvider>().reset();
+              Navigator.push(
+                context,
+                MaterialPageRoute(
+                  builder: (context) => QaPage(),
+                ),
+              );
+            },
+          ),
+      ),
       bottomSheet: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: const [
