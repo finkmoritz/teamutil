@@ -37,21 +37,21 @@ class EstimationResultPage extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Analysis'),
-                      Text('${estimationResult.analysisEffort.toString()} h'),
+                      Text('${estimationResult.analysisEffort.toStringAsFixed(2)} h'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Implementation'),
-                      Text('${estimationResult.implementationEffort.toString()} h'),
+                      Text('${estimationResult.implementationEffort.toStringAsFixed(2)} h'),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       const Text('Test'),
-                      Text('${estimationResult.testEffort.toString()} h'),
+                      Text('${estimationResult.testEffort.toStringAsFixed(2)} h'),
                     ],
                   ),
                 ],
@@ -70,7 +70,7 @@ class EstimationResultPage extends StatelessWidget {
                         style: TextStyle(fontWeight: FontWeight.bold),
                       ),
                       Text(
-                        '${estimationResult.totalEffort.toString()} h',
+                        '${estimationResult.totalEffort.toStringAsFixed(2)} h',
                         style: const TextStyle(fontWeight: FontWeight.bold),
                       ),
                     ],
