@@ -25,8 +25,8 @@ class EstimationTinderCard extends StatelessWidget {
           maxHeight: MediaQuery.of(context).size.width * 0.8,
           minWidth: MediaQuery.of(context).size.width * 0.5,
           minHeight: MediaQuery.of(context).size.width * 0.7,
-          swipeUp: true,
-          swipeDown: true,
+          swipeUp: estimationNode.choices.length > 2,
+          swipeDown: estimationNode.choices.length > 3,
           totalNum: 1,
           cardBuilder: (context, index) {
             return Card(
@@ -51,14 +51,10 @@ class EstimationTinderCard extends StatelessWidget {
                 answerIndex = 1;
                 break;
               case CardSwipeOrientation.UP:
-                if (estimationNode.choices.length > 2) {
                   answerIndex = 2;
-                }
                 break;
               case CardSwipeOrientation.DOWN:
-                if (estimationNode.choices.length > 3) {
                   answerIndex = 3;
-                }
                 break;
               default:
                 answerIndex = null;
